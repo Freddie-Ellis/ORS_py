@@ -4,8 +4,8 @@ import pyarrow.parquet as pq
 import pyarrow as pa
 from tkinter import Tk, filedialog
 #from scipy.io import loadmat
-import h5py
 from tqdm import tqdm
+from scipy.io import loadmat
 from AppendCornerPhases import AppendCornerPhases
 from ImportDLSData import ImportDLSData
 # Load settings
@@ -78,19 +78,6 @@ rootDLSFolder = filedialog.askdirectory(title="Select folder containing ALL DLS 
 
 # Load DLS file paths
 DLSFileList = LoadDLSFilePaths(rootDLSFolder)
-
-
-def loadmat(file_path):
-    with h5py.File(file_path, 'r') as f:
-        # Check available keys
-        keys = list(f.keys())
-        print(f"Keys in {file_path}: {keys}")
-         
-        # Access the dataset
-        data = f['LSD_results']
-       
-        # Convert to NumPy array or list
-        return np.array(data)
 
 # Load DLS Data
 if Settings["LoadDLSData"] == 1:
